@@ -16,7 +16,6 @@ import java.util.List;
 @Service
 public class doctorListServer implements ser {
 
-
     private final doctorListMapperImp emp;
 
     @Autowired
