@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @description: TODO 
+ * @description: 向所指网址发送ok
  * @author: yang
  * @date: 2024/4/21 10:55
  */
