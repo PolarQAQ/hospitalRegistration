@@ -9,15 +9,13 @@ import registration.hospitalregistration.pojo.doctor;
 import java.util.List;
 
 /**
- * @description: 处理野生列表页面的逻辑
+ * @description: 处理医生列表页面的逻辑
  * @author: yang
  * @date: 2024/4/21 21:51
  */
 @Service
 public class doctorListServer implements ser {
 
-
-private doctorListMapperImp domp;
 
     private final doctorListMapperImp emp;
 
