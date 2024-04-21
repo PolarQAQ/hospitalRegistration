@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @description: TODO 
+ * @description: 标准返回类
  * @author: yang
  * @date: 2024/4/21 20:19
  */
