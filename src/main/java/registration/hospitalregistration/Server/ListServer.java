@@ -3,7 +3,7 @@ package registration.hospitalregistration.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import registration.hospitalregistration.Server.Imp.server;
-import registration.hospitalregistration.mapper.Imp.listMapperImp;
+import registration.hospitalregistration.mapper.Imp.ListMapperImp;
 import registration.hospitalregistration.pojo.Doctor;
 import registration.hospitalregistration.pojo.Patient;
 import registration.hospitalregistration.pojo.Registration_;
@@ -17,10 +17,10 @@ import java.util.List;
  */
 @Service
 public class ListServer implements server {
-    private final listMapperImp list;
+    private final ListMapperImp list;
 
     @Autowired
-    public ListServer(listMapperImp list) {
+    public ListServer(ListMapperImp list) {
         this.list = list;
     }
 

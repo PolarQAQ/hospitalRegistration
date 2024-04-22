@@ -15,7 +15,7 @@ import java.util.List;
  * 通过此接口通过mybatis与数据库进行交互
  */
 @Mapper
-public interface listMapperImp {
+public interface ListMapperImp {
 
 //    @Select("select * from doctors")
     List<Doctor> doctorList();
