@@ -4,5 +4,7 @@ package registration.hospitalregistration.pojo;
  * @author: yang
  * @date: 2024/4/21 19:42
  */
-public class department {
+public class Department {
+    private Integer id;
+    private String name;
 }

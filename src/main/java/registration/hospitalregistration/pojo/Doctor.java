@@ -14,7 +14,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class doctor {
+public class Doctor {
     private Integer id;
     private String name;
     private Integer gender;
@@ -22,4 +22,5 @@ public class doctor {
     private Date createTime;
     private String technical;
     private Integer departmentId;
+    Department department;
 }

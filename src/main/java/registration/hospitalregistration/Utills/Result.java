@@ -1,4 +1,4 @@
-package registration.hospitalregistration.pojo;
+package registration.hospitalregistration.Utills;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,7 +20,7 @@ public class Result {
 
     /**
      * @description: 返回不带数据的Result
-     * @return: registration.hospitalregistration.pojo.Result
+     * @return: Registration_.hospitalregistration.Utills.Result
      * @author: Yang
      * @date: 2024/4/21 21:12
      */
@@ -32,7 +32,7 @@ public class Result {
 
 /**
  * @description: 查询成功返回数据
- * @return: registration.hospitalregistration.pojo.Result
+ * @return: Registration_.hospitalregistration.Utills.Result
  * @author: Yang
  * @date: 2024/4/21 21:31
  */
@@ -42,7 +42,7 @@ public class Result {
 
     /**
      * @description:
-     * @return: registration.hospitalregistration.pojo.Result
+     * @return: Registration_.hospitalregistration.Utills.Result
      * @author: Yang
      * @date: 2024/4/21 21:16
      */
