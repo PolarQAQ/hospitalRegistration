@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @author polar
  * @version 1.0
- * 通过此接口通过mybatis与数据库进行交互
+ * @description: 通过此接口通过mybatis与数据库进行交互进行查询操作
  */
 @Mapper
 public interface ListMapperImp {

@@ -21,6 +21,6 @@ public class Doctor {
     private Date birthday;
     private Date createTime;
     private String technical;
-    private Integer departmentId;
-    Department department;
+//    private Integer departmentId;
+    private String department;
 }
