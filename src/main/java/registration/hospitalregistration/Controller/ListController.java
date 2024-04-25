@@ -1,8 +1,8 @@
 package registration.hospitalregistration.Controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import registration.hospitalregistration.Controller.imp.ListControllerImp;
 import registration.hospitalregistration.Server.ListServer;
 import registration.hospitalregistration.Utills.Result;
@@ -40,5 +40,17 @@ public class ListController implements ListControllerImp {
     public Result registrationList() {
         log.info("查询所有挂号单信息");
         return Result.success(server.registrationList());
+    }
+
+    @PostMapping("/file_test")
+    public Result file_test (String name, Integer age, MultipartFile image) {
+        log.info("表单上传：{}, {}, {}", name, age, image);
+        return Result.success();
+    }
+
+    @GetMapping("/doctorListById/{id}")
+    public Result doctorListById(@PathVariable int id) {
+        log.info("通过id {} 返回部门的医生", id);
+        return Result.success(server.doctorListById(id));
     }
 }

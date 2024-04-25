@@ -3,7 +3,9 @@ package registration.hospitalregistration.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import registration.hospitalregistration.Server.Imp.server;
-import registration.hospitalregistration.mapper.Imp.ListMapperImp;
+import registration.hospitalregistration.mapper.Imp.doctorMapper;
+import registration.hospitalregistration.mapper.Imp.patientMapper;
+import registration.hospitalregistration.mapper.Imp.registrationMapper;
 import registration.hospitalregistration.pojo.Doctor;
 import registration.hospitalregistration.pojo.Patient;
 import registration.hospitalregistration.pojo.Registration_;
@@ -17,26 +19,33 @@ import java.util.List;
  */
 @Service
 public class ListServer implements server {
-    private final ListMapperImp list;
+    private final doctorMapper doctormapper;
+    private final patientMapper patientmapper;
+    private final registrationMapper registrationmapper;
 
     @Autowired
-    public ListServer(ListMapperImp list) {
-        this.list = list;
+    public ListServer(doctorMapper doctormapper, patientMapper patientmapper, registrationMapper registrationmapper) {
+        this.doctormapper = doctormapper;
+        this.patientmapper = patientmapper;
+        this.registrationmapper = registrationmapper;
     }
 
     @Override
     public List<Doctor> doctorList() {
-        return list.doctorList();
+        return doctormapper.doctorList();
     }
 
     @Override
     public List<Patient> patientList() {
-        return list.patientList();
+        return doctormapper.patientList();
     }
 
    @Override
     public List<Registration_> registrationList() {
-        return list.registrationList();
+        return doctormapper.registrationList();
     }
 
+    public List<Doctor> doctorListById(int id) {
+        return doctormapper.doctorListById(id);
+    }
 }
