@@ -3,6 +3,7 @@ package registration.hospitalregistration.Controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import registration.hospitalregistration.Controller.imp.doctorControllerImp;
 import registration.hospitalregistration.Server.Imp.doctorServer;
@@ -15,7 +16,7 @@ import registration.hospitalregistration.Utils.Result;
  */
 @RestController
 @Slf4j
-//@RequestMapping("/doctor")
+@RequestMapping("/doctor")
 public class doctorController implements doctorControllerImp {
 
 
@@ -26,7 +27,7 @@ public class doctorController implements doctorControllerImp {
     }
 
     @Override
-    @GetMapping("/doctor")
+    @GetMapping
     public Result doctorList() {
         log.info("查询所有医生的信息");
         return Result.success(server.doctorList());
@@ -39,7 +40,7 @@ public class doctorController implements doctorControllerImp {
      * @return 医生列表
      */
     @Override
-    @GetMapping("/doctor/{id}")
+    @GetMapping("/{id}")
     public Result doctorListByDepartmentId(@PathVariable Integer id) {
         log.info("通过id {} 返回部门的医生", id);
         return Result.success(server.doctorListByDepartmentId(id));
@@ -52,7 +53,7 @@ public class doctorController implements doctorControllerImp {
      * @date: 2024/4/26 0:46
      */
     @Override
-    @GetMapping("/doctor/{name}")
+    @GetMapping("/{name}")
     public Result doctorListByName(@PathVariable String name) {
         log.info("通过姓名模糊返回医生信息");
         return Result.success(server.doctorListByName(name));
