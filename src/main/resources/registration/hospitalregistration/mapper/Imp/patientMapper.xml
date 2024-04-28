@@ -3,8 +3,41 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="registration.hospitalregistration.mapper.Imp.patientMapper">
+    <insert id="patientInsert">
+
+    </insert>
+    <insert id="patientAdd" parameterType="registration.hospitalregistration.pojo.Patient">
+        insert into patients (name, gender, birthday, id_number, phone, address, create_time)
+        values (#{name},#{gender}, #{birthday}, #{idNumber}, #{phone}, #{address}, #{createTime})
+    </insert>
+    <update id="patientUpdate">
+        update patients
+        set patients.name=#{name},
+            patients.gender=#{gender},
+            patients.birthday=#{birthday},
+            address=#{address},
+            id_number=#{idNumber},
+            phone=#{phone},
+            create_time=#{createTime}
+        where patients.id = #{id}
+    </update>
+    <delete id="patientDelete">
+        delete
+        from patients
+        where id = #{id};
+    </delete>
 
     <select id="patientList" resultType="registration.hospitalregistration.pojo.Patient">
-        select * from patients;
+        select *
+        from patients;
+    </select>
+    <select id="patientListById" resultType="registration.hospitalregistration.pojo.Patient">
+
+    </select>
+    <select id="patientListByDepartmentId" resultType="registration.hospitalregistration.pojo.Patient">
+
+    </select>
+    <select id="patientListByDoctorId" resultType="registration.hospitalregistration.pojo.Patient">
+
     </select>
 </mapper>

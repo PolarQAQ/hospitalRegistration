@@ -8,7 +8,7 @@ import registration.hospitalregistration.pojo.Registration_;
 import java.util.List;
 
 /**
- * @author polar
+ * @author Young
  * @version 1.0
  */
 @Service

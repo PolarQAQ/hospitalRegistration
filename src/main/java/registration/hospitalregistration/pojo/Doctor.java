@@ -16,11 +16,12 @@ import java.util.Date;
 @AllArgsConstructor
 public class Doctor {
     private Integer id;
+    private Integer age;
     private String name;
     private Integer gender;
     private Date birthday;
     private Date createTime;
     private String technical;
-//    private Integer departmentId;
+    private Integer departmentId;
     private String department;
 }

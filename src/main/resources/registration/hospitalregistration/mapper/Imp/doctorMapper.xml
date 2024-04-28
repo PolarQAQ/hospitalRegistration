@@ -3,9 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="registration.hospitalregistration.mapper.Imp.doctorMapper">
-<!--    查询医生的须有信息-->
+    <!--    向数据库中添加医生的信息 name, gender, birthday, technical, departmentId, age, createTime-->
+    <insert id="doctorInsert" parameterType="registration.hospitalregistration.pojo.Doctor">
+        insert into doctors(name, gender, birthday, technical, department_id, age, create_time)
+        values (#{name}, #{gender}, #{birthday}, #{technical}, #{departmentId}, age, #{createTime})
+    </insert>
+    <!--    查询医生的须有信息-->
     <select id="doctorList" resultType="registration.hospitalregistration.pojo.Doctor">
         SELECT doctors.id
+             , doctors.age
              , doctors.`name`
              , doctors.gender
              , doctors.birthday
@@ -14,12 +20,14 @@
              , departments.`name` as department
         FROM doctors
                  INNER JOIN departments
-        WHERE doctors.department_id = departments.id;
+        WHERE doctors.department_id = departments.id
+        order by create_time desc;
     </select>
-<!--    传入部门id返回该部门的所有医生信息-->
-    <select id="doctorListById" resultType="registration.hospitalregistration.pojo.Doctor">
+    <!--    传入部门id返回该部门的所有医生信息（包括部门名称实际上部门名称大部分时间是用不到的，但是多传一个也没事，不多余）-->
+    <select id="doctorListByDepartmentId" resultType="registration.hospitalregistration.pojo.Doctor">
         SELECT doctors.id
              , doctors.`name`
+             , doctors.age
              , doctors.gender
              , doctors.birthday
              , doctors.technical
@@ -27,12 +35,16 @@
              , departments.`name` as department
         FROM doctors
                  INNER JOIN departments
-        WHERE doctors.department_id = departments.id and doctors.department_id = #{id};
+        WHERE doctors.department_id = departments.id
+          and doctors.department_id = #{id};
     </select>
     <select id="registrationList" resultType="registration.hospitalregistration.pojo.Registration_">
 
     </select>
-    <select id="patientList" resultType="registration.hospitalregistration.pojo.Patient">
+    <select id="doctorListByName" resultType="registration.hospitalregistration.pojo.Doctor">
+
+    </select>
+    <select id="doctorListByNameDepartmentId" resultType="registration.hospitalregistration.pojo.Doctor">
 
     </select>
 </mapper>

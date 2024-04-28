@@ -1,6 +1,6 @@
 package registration.hospitalregistration.Controller.imp;
 
-import registration.hospitalregistration.Utills.Result;
+import registration.hospitalregistration.Utils.Result;
 
 /**@Description: 医生列表页面的逻辑接口
  * @author polar
@@ -15,7 +15,7 @@ public interface ListControllerImp {
      * @date: 2024/4/21 20:35
      */
     
-    Result doctorList();
+//    Result doctorList();
     Result patientList();
     Result registrationList();
 

@@ -1,12 +1,8 @@
 package registration.hospitalregistration.mapper.Imp;
 
 import org.apache.ibatis.annotations.Mapper;
-//import org.apache.ibatis.annotations.Param;
-//import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Param;
 import registration.hospitalregistration.pojo.Doctor;
-import registration.hospitalregistration.pojo.Patient;
-import registration.hospitalregistration.pojo.Registration_;
 
 import java.util.List;
 
@@ -18,20 +14,22 @@ import java.util.List;
 @Mapper
 public interface doctorMapper {
 
-//    @Select("select * from doctors")
-    List<Doctor> doctorList();
-//    @Select("select * from patients")
 
-    /**
-     * @description: 传入部门id查看该部门的医生
-     * @return: java.util.List<registration.hospitalregistration.pojo.Doctor>
+    /*
+     * @description: 直接查询所有的医生信息 返回医生列表
+     * @return:
      * @author: Yang
-     * @date: 2024/4/25 10:25
+     * @date: 2024/4/25 11:23
      */
 
-    List<Doctor> doctorListById(@Param("id") int id);
+    List<Doctor> doctorList();
 
-    List<Registration_> registrationList();
+    List<Doctor> doctorListByDepartmentId(@Param("id") int id);
 
-    List<Patient> patientList();
+
+    void doctorInsert(Doctor doctor);
+
+    List<Doctor> doctorListByName(String name);
+
+    List<Doctor> doctorListByNameDepartmentId(String name, Integer id);
 }
