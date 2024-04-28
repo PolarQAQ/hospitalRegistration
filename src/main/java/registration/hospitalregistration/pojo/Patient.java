@@ -26,4 +26,8 @@ public class Patient {
     private String phone;
     private String address;
     private Date createTime;
+    private Integer doctorId;
+    private String doctorName;
+    private Integer departmentId;
+    private String department;
 }

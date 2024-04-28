@@ -1,4 +1,4 @@
-package registration.hospitalregistration.Utills;
+package registration.hospitalregistration.Utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,7 +32,7 @@ public class Result {
 
 /**
  * @description: 查询成功返回数据
- * @return: Registration_.hospitalregistration.Utills.Result
+ * @return: Registration_.hospitalregistration.Utils.Result
  * @author: Yang
  * @date: 2024/4/21 21:31
  */
