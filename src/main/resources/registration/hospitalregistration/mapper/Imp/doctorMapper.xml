@@ -26,9 +26,7 @@
              , doctors.create_time
              , doctors.department_id
              , departments.`name` as department
-        from doctors,
-             departments
-                 inner join departments
+        from doctors
                  inner join departments
         where doctors.department_id = departments.id
         order by update_time desc;
@@ -49,17 +47,6 @@
     </select>
     <!--    传入部门id返回该部门的所有医生信息（包括部门名称实际上部门名称大部分时间是用不到的，但是多传一个也没事，不多余）-->
     <select id="doctorListByDepartmentId" resultType="registration.hospitalregistration.pojo.Doctor">
-        # SELECT doctors.id
-        # , doctors.`name`
-        # , doctors.age
-        # , doctors.gender
-        # , doctors.birthday
-        # , doctors.technical
-        # , doctors.create_time
-        # ,doctors.department_id
-        # , departments.`name` as department
-        # FROM doctors
-        # INNER JOIN departments
         <include refid="doctor">
             
         </include>
@@ -80,9 +67,9 @@
         </include>
         <where>
             doctors.department_id = departments.id
-            <if test="name != null">
-                and doctors.name like concat('%',#{name},'%')
-            </if>
+<!--            <if test="name != null">-->
+<!--                and doctors.name like concat('%',#{name},'%')-->
+<!--            </if>-->
         </where>
     </select>
     <select id="doctorListByNameDepartmentId" resultType="registration.hospitalregistration.pojo.Doctor">
@@ -99,7 +86,7 @@
             </if>
         </where>
     </select>
-    <!--    通过病人id查询该病人的医生-->
+    <!--    通过病人id查询该病人的医生 TODO-->
     <select id="doctorListByPatientId" resultType="registration.hospitalregistration.pojo.Doctor">
         SELECT doctors.id
              , doctors.age
