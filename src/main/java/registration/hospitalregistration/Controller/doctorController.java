@@ -19,7 +19,6 @@ import registration.hospitalregistration.Utils.Result;
 @RequestMapping("/doctor")
 public class doctorController implements doctorControllerImp {
 
-
     private final doctorServer server;
 
     doctorController(doctorServer server) {
@@ -40,7 +39,7 @@ public class doctorController implements doctorControllerImp {
      * @return 医生列表
      */
     @Override
-    @GetMapping("/{id}")
+    @GetMapping("/department/{id}")
     public Result doctorListByDepartmentId(@PathVariable Integer id) {
         log.info("通过id {} 返回部门的医生", id);
         return Result.success(server.doctorListByDepartmentId(id));
@@ -59,11 +58,16 @@ public class doctorController implements doctorControllerImp {
         return Result.success(server.doctorListByName(name));
     }
 
-//    @GetMapping("/{id}/{name}")
-//    public Result doctorListByNameByDepartmentId(@PathVariable String name, @PathVariable Integer id) {
-//        log.info("通过部门id和姓名模糊查询医生的列表");
-//        return Result.success(server.doctorListByNameDepartmentId(name, id));
-//    }
+    @GetMapping("/{id}/{name}")
+    public Result doctorListByNameByDepartmentId(@PathVariable String name, @PathVariable Integer id) {
+        log.info("通过部门id和姓名模糊查询医生的列表");
+        return Result.success(server.doctorListByNameDepartmentId(name, id));
+    }
 
+    @GetMapping("/patient/{id}")
+    public Result doctorListByPatientId(@PathVariable Integer id) {
+        log.info("通过病人id {} 返回医生的信息", id);
+        return Result.success(server.doctorListByPatientId(id));
+    }
 
 }

@@ -32,4 +32,8 @@ public interface doctorMapper {
     List<Doctor> doctorListByName(String name);
 
     List<Doctor> doctorListByNameDepartmentId(String name, Integer id);
+
+    List<Doctor> doctorListByPatientId(Integer id);
+
+    Doctor login(Doctor doctor);
 }

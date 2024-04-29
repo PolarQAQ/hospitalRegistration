@@ -57,4 +57,8 @@ public class doctorServer implements doctorServerImp{
     public List<Doctor> doctorListByNameDepartmentId(String name, Integer id) {
         return dmp.doctorListByNameDepartmentId(name, id);
     }
+
+    public List<Doctor> doctorListByPatientId(Integer id) {
+        return dmp.doctorListByPatientId(id);
+    }
 }
