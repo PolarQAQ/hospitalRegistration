@@ -1,5 +1,6 @@
 package registration.hospitalregistration.Server.Imp;
 
+import jakarta.annotation.Resource;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,12 +15,9 @@ import java.util.List;
 
 public class doctorServer implements doctorServerImp{
 
-    final private doctorMapper dmp;
-
-    @Autowired
-    doctorServer(doctorMapper dmp) {
-        this.dmp = dmp;
-    }
+//
+    @Resource
+    private doctorMapper dmp;
 
 
     /**

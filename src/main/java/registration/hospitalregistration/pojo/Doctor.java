@@ -3,7 +3,7 @@ package registration.hospitalregistration.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.joda.time.DateTime;
+
 
 import java.util.Date;
 
@@ -25,7 +25,7 @@ public class Doctor {
     private String technical;
     private Integer departmentId;
     private String department;
-    private DateTime updateTime;
+    private Date updateTime;
     private String username;
-    private String password;
+//    private String password;
 }

@@ -1,5 +1,4 @@
 package registration.hospitalregistration.Controller;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,10 +7,9 @@ import registration.hospitalregistration.Utils.JwtUtil;
 import registration.hospitalregistration.Utils.Result;
 import registration.hospitalregistration.mapper.Imp.doctorMapper;
 import registration.hospitalregistration.pojo.Doctor;
-
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
+
 
 @Slf4j
 @RestController

@@ -26,7 +26,6 @@ public interface doctorMapper {
 
     List<Doctor> doctorListByDepartmentId(@Param("id") int id);
 
-
     void doctorInsert(Doctor doctor);
 
     List<Doctor> doctorListByName(String name);
