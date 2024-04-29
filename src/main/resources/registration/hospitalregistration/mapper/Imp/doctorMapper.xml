@@ -103,11 +103,12 @@
              , departments.`name` as department
         FROM doctors
                  INNER JOIN departments
-                 Inner join hospitalregistration.registrations r on departments.id = r.department_id
-            and doctors.id = r.doctor_id and doctor_id = doctors.department_id
-        WHERE doctors.department_id = departments.id
-          and doctors.id = #{id}
-        order by r.update_time desc;
+                 Inner join registrations
+                 Inner join patients
+                            on departments.id = doctors.department_id
+                                and doctors.id = registrations.doctor_id and registrations.patient_id = patients.id
+                                and patients.id = #{id}
+        order by registrations.update_time desc;
     </select>
     <select id="login" resultType="registration.hospitalregistration.pojo.Doctor">
         select * from doctors

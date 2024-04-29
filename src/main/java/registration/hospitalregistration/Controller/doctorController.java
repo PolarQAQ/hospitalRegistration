@@ -58,7 +58,7 @@ public class doctorController implements doctorControllerImp {
         return Result.success(server.doctorListByName(name));
     }
 
-    @GetMapping("/{id}/{name}")
+    @GetMapping("/department/{id}/{name}")
     public Result doctorListByNameByDepartmentId(@PathVariable String name, @PathVariable Integer id) {
         log.info("通过部门id和姓名模糊查询医生的列表");
         return Result.success(server.doctorListByNameDepartmentId(name, id));
