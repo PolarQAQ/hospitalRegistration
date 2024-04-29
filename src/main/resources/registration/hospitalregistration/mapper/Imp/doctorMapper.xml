@@ -3,21 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="registration.hospitalregistration.mapper.Imp.doctorMapper">
-    <sql id="doctor">
-        select doctors.id
-             , doctors.age
-             , doctors.`name`
-             , doctors.gender
-             , doctors.birthday
-             , doctors.technical
-             , doctors.create_time
-             , doctors.department_id
-             , doctors.update_time
-             ,doctors.username
-             , departments.`name` as department
-        FROM doctors
-                 INNER JOIN departments
-    </sql>
     <sql id="doctorSelect">
         select doctors.id
              , doctors.age
@@ -28,12 +13,10 @@
              , doctors.create_time
              , doctors.department_id
              , doctors.update_time
-             ,doctors.username
+             , doctors.username
              , departments.`name` as department
         from doctors
                  inner join departments
-        where doctors.department_id = departments.id
-        order by update_time desc;
     </sql>
     <!--    <sql id="orderByUpdateTime">-->
     <!--        order by-->
@@ -45,13 +28,13 @@
     </insert>
     <!--    查询医生的基本信息-->
     <select id="doctorList" resultType="registration.hospitalregistration.pojo.Doctor">
-        <include refid="doctorSelect">
-
-        </include>
+        <include refid="doctorSelect"> </include>
+        where doctors.department_id = departments.id
+        order by update_time desc;
     </select>
     <!--    传入部门id返回该部门的所有医生信息（包括部门名称实际上部门名称大部分时间是用不到的，但是多传一个也没事，不多余）-->
     <select id="doctorListByDepartmentId" resultType="registration.hospitalregistration.pojo.Doctor">
-        <include refid="doctor">
+        <include refid="doctorSelect">
             
         </include>
         <where>
@@ -66,7 +49,7 @@
     </select>
     <!--    通过医生姓名模糊查询-->
     <select id="doctorListByName" resultType="registration.hospitalregistration.pojo.Doctor">
-        <include refid="doctor">
+        <include refid="doctorSelect">
 
         </include>
         <where>
@@ -77,7 +60,7 @@
         </where>
     </select>
     <select id="doctorListByNameDepartmentId" resultType="registration.hospitalregistration.pojo.Doctor">
-        <include refid="doctor">
+        <include refid="doctorSelect">
 
         </include>
         <where>
@@ -90,24 +73,20 @@
             </if>
         </where>
     </select>
-    <!--    通过病人id查询该病人的医生 TODO-->
+    <!--    通过病人id查询该病人的医生-->
     <select id="doctorListByPatientId" resultType="registration.hospitalregistration.pojo.Doctor">
-        SELECT doctors.id
-             , doctors.age
-             , doctors.`name`
-             , doctors.gender
-             , doctors.birthday
-             , doctors.technical
-             , doctors.create_time
-             , doctors.department_id
-             , departments.`name` as department
-        FROM doctors
-                 INNER JOIN departments
-                 Inner join registrations
-                 Inner join patients
-                            on departments.id = doctors.department_id
-                                and doctors.id = registrations.doctor_id and registrations.patient_id = patients.id
-                                and patients.id = #{id}
+        <include refid="doctorSelect">
+
+        </include>
+        Inner join registrations
+        Inner join patients
+        <where>
+            departments.id = doctors.department_id
+            and doctors.id = registrations.doctor_id and registrations.patient_id = patients.id
+            <if test="id != null">
+                and patients.id = #{id}
+            </if>
+        </where>
         order by registrations.update_time desc;
     </select>
     <select id="login" resultType="registration.hospitalregistration.pojo.Doctor">
