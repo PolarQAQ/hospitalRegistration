@@ -24,6 +24,11 @@ public class LoginController {
         this.dmp = dmp;
     }
 
+    /**
+     * 可以使用RequestBody注解用简单的字符串或者对象接受前端传来的参数
+     * @param doctor
+     * @return
+     */
     @PostMapping("/login")
     public Result login(@RequestBody Doctor doctor) {
         log.info("医生登录");

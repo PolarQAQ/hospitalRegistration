@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import registration.hospitalregistration.Utils.JwtUtil;
 import registration.hospitalregistration.Utils.Result;
 
-@Component
+//@Component
 @Slf4j
 public class LoginCheckInterceptor implements HandlerInterceptor {
 

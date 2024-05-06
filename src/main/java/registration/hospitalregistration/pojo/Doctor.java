@@ -27,5 +27,5 @@ public class Doctor {
     private String department;
     private Date updateTime;
     private String username;
-//    private String password;
+    private String password;
 }

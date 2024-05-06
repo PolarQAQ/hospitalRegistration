@@ -56,7 +56,21 @@ public class doctorServer implements doctorServerImp{
         return dmp.doctorListByNameDepartmentId(name, id);
     }
 
+
+    @Override
+    public void doctorAdd(Doctor doctor) {
+        dmp.doctorInsert(doctor);
+    }
+
     public List<Doctor> doctorListByPatientId(Integer id) {
         return dmp.doctorListByPatientId(id);
+    }
+
+    public void doctorDelete(Integer id) {
+        dmp.doctorDelete(id);
+    }
+
+    public void doctorUpdate(Doctor doctor) {
+
     }
 }

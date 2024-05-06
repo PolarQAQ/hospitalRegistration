@@ -21,18 +21,12 @@ public interface doctorMapper {
      * @author: Yang
      * @date: 2024/4/25 11:23
      */
-
     List<Doctor> doctorList();
-
     List<Doctor> doctorListByDepartmentId(@Param("id") int id);
-
     void doctorInsert(Doctor doctor);
-
     List<Doctor> doctorListByName(String name);
-
     List<Doctor> doctorListByNameDepartmentId(String name, Integer id);
-
     List<Doctor> doctorListByPatientId(Integer id);
-
     Doctor login(Doctor doctor);
+    void doctorDelete(Integer id);
 }

@@ -23,9 +23,12 @@
     <!--    </sql>-->
     <!--    向数据库中添加医生的信息 name, gender, birthday, technical, departmentId, age, createTime-->
     <insert id="doctorInsert" parameterType="registration.hospitalregistration.pojo.Doctor">
-        insert into doctors(name, gender, birthday, technical, department_id, age, create_time, update_time)
-        values (#{name}, #{gender}, #{birthday}, #{technical}, #{departmentId}, #{age}, #{createTime}, now())
+        insert into doctors(name, gender, birthday, technical, username, department_id, age, create_time, update_time)
+        values (#{name}, #{gender}, #{birthday}, #{technical}, #{username}, #{departmentId}, #{age}, now(), now())
     </insert>
+    <delete id="doctorDelete">
+        delete from doctors where id=#{id}
+    </delete>
     <!--    查询医生的基本信息-->
     <select id="doctorList" resultType="registration.hospitalregistration.pojo.Doctor">
         <include refid="doctorSelect"> </include>

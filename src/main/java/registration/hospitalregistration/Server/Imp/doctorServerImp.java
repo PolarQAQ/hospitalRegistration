@@ -11,10 +11,8 @@ import java.util.List;
 
 public interface doctorServerImp {
     List<Doctor> doctorList();
-
     List<Doctor> doctorListByDepartmentId(Integer id);
-
     List<Doctor> doctorListByName(String name);
-
     List<Doctor> doctorListByNameDepartmentId(String name, Integer id);
+    void doctorAdd(Doctor doctor);
 }
