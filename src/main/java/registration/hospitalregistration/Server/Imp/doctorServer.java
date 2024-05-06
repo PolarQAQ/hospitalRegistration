@@ -4,7 +4,9 @@ import jakarta.annotation.Resource;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import registration.hospitalregistration.mapper.Imp.doctorMapper;
+import registration.hospitalregistration.mapper.Imp.registrationMapper;
 import registration.hospitalregistration.pojo.Doctor;
 
 import java.util.List;
@@ -19,6 +21,8 @@ public class doctorServer implements doctorServerImp{
     @Resource
     private doctorMapper dmp;
 
+    @Resource
+    private registrationMapper rgp;
 
     /**
      * @return 返回医生列表
@@ -66,10 +70,20 @@ public class doctorServer implements doctorServerImp{
         return dmp.doctorListByPatientId(id);
     }
 
+    /**
+     * 此处应使用事务使注册单删除和医生删除要同步，不可分割
+     * @param id
+     */
+    @Transactional//这个注解可以用于开启和提交事务
     public void doctorDelete(Integer id) {
+        rgp.registrationDeleteByDoctor(id);
         dmp.doctorDelete(id);
     }
 
+    /**
+     * TODO
+     * @param doctor
+     */
     public void doctorUpdate(Doctor doctor) {
 
     }

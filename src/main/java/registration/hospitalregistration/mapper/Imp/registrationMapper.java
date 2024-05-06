@@ -13,4 +13,6 @@ import java.util.List;
 @Mapper
 public interface registrationMapper {
     List<Registration_> registrationList();
+    void registrationDeleteByDoctor(Integer id);
+
 }
