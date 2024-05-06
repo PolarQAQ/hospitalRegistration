@@ -18,14 +18,48 @@
         from doctors
                  inner join departments
     </sql>
-    <!--    <sql id="orderByUpdateTime">-->
-    <!--        order by-->
-    <!--    </sql>-->
     <!--    向数据库中添加医生的信息 name, gender, birthday, technical, departmentId, age, createTime-->
     <insert id="doctorInsert" parameterType="registration.hospitalregistration.pojo.Doctor">
         insert into doctors(name, gender, birthday, technical, username, department_id, age, create_time, update_time)
         values (#{name}, #{gender}, #{birthday}, #{technical}, #{username}, #{departmentId}, #{age}, now(), now())
     </insert>
+<!--   更新医生-->
+    <update id="doctorUpdate">
+        update doctors
+        <set>
+            <if test="age != null">
+                age=#{age},
+            </if>
+            <if test="name != null">
+                name=#{name},
+            </if>
+            <if test="gender != null">
+                gender=#{gender},
+            </if>
+            <if test="birthday != null">
+                birthday=#{birthday},
+            </if>
+            <if test="createTime != null">
+                create_time=#{createTime},
+            </if>
+            <if test="technical != null and technical != ''">
+                technical=#{technical},
+            </if>
+            <if test="departmentId != null">
+                department_id=#{departmentId},
+            </if>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+        <if test="updateTime != null">
+            update_time=#{updateTime}
+        </if>
+        </set>
+        where id = #{id}
+    </update>
     <delete id="doctorDelete">
         delete from doctors where id=#{id}
     </delete>
@@ -48,7 +82,6 @@
         </where>
     </select>
     <select id="registrationList" resultType="registration.hospitalregistration.pojo.Registration_">
-
     </select>
     <!--    通过医生姓名模糊查询-->
     <select id="doctorListByName" resultType="registration.hospitalregistration.pojo.Doctor">

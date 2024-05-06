@@ -9,17 +9,17 @@ import registration.hospitalregistration.mapper.Imp.doctorMapper;
 import registration.hospitalregistration.mapper.Imp.registrationMapper;
 import registration.hospitalregistration.pojo.Doctor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
 @Service
 @Data
-
 public class doctorServer implements doctorServerImp{
 
 //
     @Resource
-    private doctorMapper dmp;
+    private final doctorMapper dmp;
 
     @Resource
     private registrationMapper rgp;
@@ -81,10 +81,11 @@ public class doctorServer implements doctorServerImp{
     }
 
     /**
-     * TODO
+     * 医生更新
      * @param doctor
      */
     public void doctorUpdate(Doctor doctor) {
-
+       doctor.setUpdateTime(LocalDateTime.now());
+       dmp.doctorUpdate(doctor);
     }
 }

@@ -8,7 +8,7 @@ import registration.hospitalregistration.pojo.Doctor;
  * @author Young
  * @version 1.0
  */
-//@RestController
+
 public interface doctorControllerImp {
     Result doctorList();
     Result doctorListByDepartmentId(Integer id);

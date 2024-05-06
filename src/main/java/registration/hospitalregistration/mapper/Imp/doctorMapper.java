@@ -29,4 +29,5 @@ public interface doctorMapper {
     List<Doctor> doctorListByPatientId(Integer id);
     Doctor login(Doctor doctor);
     void doctorDelete(Integer id);
+    void doctorUpdate(Doctor doctor);
 }

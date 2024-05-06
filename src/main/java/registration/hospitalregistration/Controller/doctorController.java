@@ -75,7 +75,7 @@ public class doctorController implements doctorControllerImp {
     @Override
     @PutMapping
     public Result doctorUpdate(@RequestBody Doctor doctor) {
-        log.info("更新id {} 的医生信息",doctor.getId());
+        log.info("更新的医生信息{}",doctor);
         server.doctorUpdate(doctor);
         return Result.success();
     }

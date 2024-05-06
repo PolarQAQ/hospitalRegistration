@@ -12,6 +12,6 @@ public interface patientControllerImp {
     Result patientListByDoctorId(Integer id);
     Result patientListByDepartmentId(Integer id);
     Result patientUpdate(Patient patient);
-    Result patientDelete();
+    Result patientDelete(Integer id);
     Result patientAdd(Patient patient);
 }

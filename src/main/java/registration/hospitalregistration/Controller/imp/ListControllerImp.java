@@ -14,8 +14,6 @@ public interface ListControllerImp {
      * @author: Yang
      * @date: 2024/4/21 20:35
      */
-    
-//    Result doctorList();
     Result patientList();
     Result registrationList();
 

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -25,7 +26,7 @@ public class Doctor {
     private String technical;
     private Integer departmentId;
     private String department;
-    private Date updateTime;
+    private LocalDateTime updateTime;
     private String username;
     private String password;
 }
