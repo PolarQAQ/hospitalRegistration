@@ -3,6 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="registration.hospitalregistration.mapper.Imp.registrationMapper">
+    <delete id="registrationDeleteByDoctor">
+        delete
+        from registrations
+        where doctor_id = #{id}
+    </delete>
     <select id="registrationList" resultType="registration.hospitalregistration.pojo.Registration_">
 
     </select>
