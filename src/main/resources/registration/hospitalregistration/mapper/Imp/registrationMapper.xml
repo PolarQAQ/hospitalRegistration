@@ -61,6 +61,11 @@
         from registrations
         where id=#{id};
     </delete>
+    <delete id="registrationDeleteByPatientId">
+            delete
+            from registrations
+            where patient_id=#{id}
+    </delete>
 
     <select id="List" resultType="registration.hospitalregistration.pojo.Registration_">
         <include refid="registration">

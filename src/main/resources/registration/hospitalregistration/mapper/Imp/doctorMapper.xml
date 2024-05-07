@@ -18,7 +18,9 @@
         from doctors
                  inner join departments
     </sql>
-    <!--    向数据库中添加医生的信息 name, gender, birthday, technical, departmentId, age, createTime-->
+    <!--    向数据库中添加医生的信息 name, gender, birthday, technical, departmentId, age, createTime
+    parameterType的值是指传参的类型
+    -->
     <insert id="doctorInsert" parameterType="registration.hospitalregistration.pojo.Doctor">
         insert into doctors(name, gender, birthday, technical, username, department_id, age, create_time, update_time)
         values (#{name}, #{gender}, #{birthday}, #{technical}, #{username}, #{departmentId}, #{age}, now(), now())

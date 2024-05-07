@@ -1,8 +1,15 @@
 package registration.hospitalregistration.Server.Imp;
 
+import jakarta.annotation.Resource;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import registration.hospitalregistration.mapper.Imp.doctorMapper;
 import registration.hospitalregistration.mapper.Imp.patientMapper;
+import registration.hospitalregistration.mapper.Imp.registrationMapper;
 import registration.hospitalregistration.pojo.Patient;
 
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -10,64 +17,45 @@ import java.util.List;
  * @author: Young
  * @date: 2024/4/26 8:26
  */
+@Service
 public class PatientServer implements patientServerImp{
 
-    final private patientMapper pmp;
+ @Resource
+ private patientMapper pmp;
+@Resource
+private registrationMapper rmp;
+ @Resource
+ private doctorMapper dmp;
+ public List<Patient> List() {
+  return pmp.List();
+ }
+ public List<Patient> ListByDoctorId(Integer id) {
+  return pmp.ListByDoctorId(id);
+ }
+ public List<Patient> ListByDepartmentId(Integer id) {
+  return pmp.ListByDepartmentId(id);
+ }
 
-    public PatientServer(patientMapper pmp) {
-        this.pmp = pmp;
-    }
-
-    /**
-     * @return 病人列表
-     */
-    @Override
-    public List<Patient> patientList() {
-        return pmp.patientList();
-    }
-
-    /**
-     * @param id 医生的主键
-     * @return 通过医生主键查询的病人（每个医生的患者）
-     */
-    @Override
-    public List<Patient> patientListByDoctorId(Integer id) {
-        return pmp.patientListByDoctorId(id);
-    }
-
-    /**
-     * @param id 通过部门的主键查询部门的病人
-     * @return 病人列表
-     */
-    @Override
-    public List<Patient> patientListByDepartmentId(Integer id) {
-        return pmp.patientListByDepartmentId(id);
-    }
-
-    /**
-     * @param patient
-     * 病人数据更新
-     *
-     */
-    @Override
-    public void patientUpdate(Patient patient) {
-
-    }
-
-    /**
-     *
-     */
-    @Override
-    public void patientDelete() {
-
-    }
-
-    /**
-     * @param patient
-     * 添加病人信息
-     */
-    @Override
-    public void patientAdd(Patient patient) {
-
-    }
+ /**
+  * 删除病人的同时，对应的病历单也会删除
+  * @param patient
+  */
+ @Transactional
+ public void Update(Patient patient) {
+  patient.setUpdateTime(LocalDateTime.now());
+  pmp.Update(patient);
+ }
+ @Transactional
+ public void Delete(Integer id) {
+  rmp.registrationDeleteByPatientId(id);
+  pmp.Delete(id);
+ }
+ @Transactional
+ public void Add(Patient patient) {
+  patient.setUpdateTime(LocalDateTime.now());
+  pmp.Add(patient);
+ }
+ public Patient ListById(Integer id) {
+  return pmp.ListById(id);
+ }
 }

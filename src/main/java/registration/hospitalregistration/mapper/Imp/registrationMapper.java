@@ -24,5 +24,7 @@ public interface registrationMapper {
     void Delete(Integer id);
 
     void Add(Registration_ registration);
+    void registrationDeleteByPatientId(Integer id);
+
 
 }

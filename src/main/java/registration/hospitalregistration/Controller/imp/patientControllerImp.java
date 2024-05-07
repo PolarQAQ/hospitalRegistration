@@ -8,10 +8,10 @@ import registration.hospitalregistration.pojo.Patient;
  * @version 1.0
  */
 public interface patientControllerImp {
-    Result patientList();
-    Result patientListByDoctorId(Integer id);
-    Result patientListByDepartmentId(Integer id);
-    Result patientUpdate(Patient patient);
-    Result patientDelete(Integer id);
-    Result patientAdd(Patient patient);
+    Result List();
+    Result ListByDoctorId(Integer id);
+    Result ListByDepartmentId(Integer id);
+    Result Update(Patient patient);
+    Result Delete(Integer id);
+    Result Add(Patient patient);
 }
