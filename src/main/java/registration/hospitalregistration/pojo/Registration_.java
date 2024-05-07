@@ -17,6 +17,8 @@ import java.time.LocalDateTime;
 public class Registration_ {
     private Integer id;
     private Integer patientId;
+    private String patientName;
+    private String doctorName;
     private Integer doctorId;
     private Integer departmentId;
     private LocalDateTime registrationTime;//注册时间

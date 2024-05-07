@@ -85,6 +85,7 @@ public class registrationController implements registrationControllerImp {
      * @return
      */
     @Override
+    @PutMapping
     public Result Add(Registration_ registration) {
         log.info("添加病历单{}",registration);
         server.Add(registration);

@@ -3,12 +3,53 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="registration.hospitalregistration.mapper.Imp.registrationMapper">
+    <sql id="registration">
+        select registrations.id,
+               patients.id               as patientId,
+               patients.name             as patientName,
+               doctors.name              as doctorName,
+               doctors.id                as doctorId,
+               departments.id            as departmentId,
+               registration_time,
+               state,
+               registrations.create_time as createTime,
+               registrations.update_time as updateTime
+        from registrations
+                 inner join doctors
+                 inner join departments
+                 inner join patients
+                            on doctors.id = registrations.doctor_id
+                                and patient_id = patients.id
+                                and registrations.department_id = departments.id
+    </sql>
+    <insert id="Add">
+
+    </insert>
+    <update id="Update">
+
+    </update>
     <delete id="registrationDeleteByDoctor">
         delete
         from registrations
         where doctor_id = #{id}
     </delete>
-    <select id="registrationList" resultType="registration.hospitalregistration.pojo.Registration_">
+    <delete id="Delete">
 
+    </delete>
+
+    <select id="List" resultType="registration.hospitalregistration.pojo.Registration_">
+        <include refid="registration">
+        </include>
+    </select>
+    <select id="ListByDoctorId" resultType="registration.hospitalregistration.pojo.Registration_">
+<include refid="registration">
+
+</include>
+and doctors.id = #{id}
+    </select>
+    <select id="ListByDepartmentId" resultType="registration.hospitalregistration.pojo.Registration_">
+<include refid="registration">
+</include>
+and departments.id=#{id}
     </select>
 </mapper>
