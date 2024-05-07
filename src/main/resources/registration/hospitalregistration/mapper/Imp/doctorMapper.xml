@@ -60,6 +60,7 @@
         </set>
         where id = #{id}
     </update>
+
     <delete id="doctorDelete">
         delete from doctors where id=#{id}
     </delete>

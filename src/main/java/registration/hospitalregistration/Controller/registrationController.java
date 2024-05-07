@@ -16,14 +16,9 @@ import registration.hospitalregistration.pojo.Registration_;
 public class registrationController implements registrationControllerImp {
 
     @Resource
-    private final registrationServer server;
+    private  registrationServer server;
     @Resource
-    private final registrationMapper mapper;
-
-    public registrationController(registrationServer server, registrationMapper mapper) {
-        this.server = server;
-        this.mapper = mapper;
-    }
+    private  registrationMapper mapper;
 
     /**病历单列表
      * @return
@@ -57,15 +52,15 @@ public class registrationController implements registrationControllerImp {
         return Result.success(server.ListByDepartmentId(id));
     }
 
-    /**根据病人查询病历单
-     * @param patient
+    /**更新病历单信息
+     * @param registration
      * @return
      */
     @Override
     @PutMapping
-    public Result Update(@RequestBody Patient patient) {
+    public Result Update(@RequestBody Registration_ registration) {
         log.info("更新病历单信息");
-        server.Update(patient);
+        server.Update(registration);
         return Result.success();
     }
 
@@ -85,7 +80,7 @@ public class registrationController implements registrationControllerImp {
      * @return
      */
     @Override
-    @PutMapping
+    @PostMapping
     public Result Add(Registration_ registration) {
         log.info("添加病历单{}",registration);
         server.Add(registration);

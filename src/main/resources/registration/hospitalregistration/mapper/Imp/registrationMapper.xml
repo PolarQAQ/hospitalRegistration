@@ -5,15 +5,16 @@
 <mapper namespace="registration.hospitalregistration.mapper.Imp.registrationMapper">
     <sql id="registration">
         select registrations.id,
-               patients.id               as patientId,
-               patients.name             as patientName,
-               doctors.name              as doctorName,
-               doctors.id                as doctorId,
-               departments.id            as departmentId,
+               patients.id                    as patientId,
+               patients.name                  as patientName,
+               doctors.name                   as doctorName,
+               doctors.id                     as doctorId,
+               departments.id                 as departmentId,
+               registrations.oppointment_time as oppointmentTime,
                registration_time,
                state,
-               registrations.create_time as createTime,
-               registrations.update_time as updateTime
+               registrations.create_time      as createTime,
+               registrations.update_time      as updateTime
         from registrations
                  inner join doctors
                  inner join departments
@@ -23,10 +24,32 @@
                                 and registrations.department_id = departments.id
     </sql>
     <insert id="Add">
-
+        insert into registrations(patient_id, doctor_id, department_id, oppointment_time)
+        VALUES(#{patientId}, #{doctorId}, #{departmentId}, #{oppointmentTime});
     </insert>
     <update id="Update">
-
+        update registrations
+        <set>
+            <if test="patientId != null">
+                patient_id=#{patientId},
+            </if>
+            <if test="doctorId != null">
+                doctor_id=#{doctorId},
+            </if>
+            <if test="departmentId != null">
+                department_id=#{departmentId},
+            </if>
+            <if test="registrationTime != null">
+                registration_time=#{registrationTime},
+            </if>
+            <if test="oppointmentTime != null">
+                oppointment_time=#{oppointmentTime},
+            </if>
+            <if test="state != null and state != ''">
+                state=#{state},
+            </if>
+        </set>
+        where id=#{id}
     </update>
     <delete id="registrationDeleteByDoctor">
         delete
@@ -34,7 +57,9 @@
         where doctor_id = #{id}
     </delete>
     <delete id="Delete">
-
+        delete
+        from registrations
+        where id=#{id};
     </delete>
 
     <select id="List" resultType="registration.hospitalregistration.pojo.Registration_">
@@ -42,14 +67,14 @@
         </include>
     </select>
     <select id="ListByDoctorId" resultType="registration.hospitalregistration.pojo.Registration_">
-<include refid="registration">
+        <include refid="registration">
 
-</include>
-and doctors.id = #{id}
+        </include>
+        and doctors.id = #{id}
     </select>
     <select id="ListByDepartmentId" resultType="registration.hospitalregistration.pojo.Registration_">
-<include refid="registration">
-</include>
-and departments.id=#{id}
+        <include refid="registration">
+        </include>
+        and departments.id=#{id}
     </select>
 </mapper>

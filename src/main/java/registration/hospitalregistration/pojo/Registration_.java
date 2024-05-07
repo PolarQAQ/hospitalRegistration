@@ -20,6 +20,7 @@ public class Registration_ {
     private String patientName;
     private String doctorName;
     private Integer doctorId;
+    private LocalDateTime oppointmentTime;
     private Integer departmentId;
     private LocalDateTime registrationTime;//注册时间
     private String state;

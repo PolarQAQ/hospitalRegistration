@@ -3,6 +3,7 @@ package registration.hospitalregistration.mapper.Imp;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import registration.hospitalregistration.pojo.Doctor;
+import registration.hospitalregistration.pojo.Registration_;
 
 import java.util.List;
 

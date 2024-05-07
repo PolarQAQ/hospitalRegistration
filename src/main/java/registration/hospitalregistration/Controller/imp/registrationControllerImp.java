@@ -8,7 +8,7 @@ public interface registrationControllerImp {
     Result List();
     Result ListByDoctorId(Integer id);
     Result ListByDepartmentId(Integer id);
-    Result Update(Patient patient);
+    Result Update(Registration_ registration);
     Result Delete(Integer id);
     Result Add(Registration_ registration);
 }

@@ -1,7 +1,6 @@
 package registration.hospitalregistration.mapper.Imp;
 
 import org.apache.ibatis.annotations.Mapper;
-import registration.hospitalregistration.pojo.Patient;
 import registration.hospitalregistration.pojo.Registration_;
 
 import java.util.List;
@@ -20,9 +19,10 @@ public interface registrationMapper {
 
     List<Registration_> ListByDepartmentId(Integer id);
 
-    void Update(Patient patient);
+    void Update(Registration_ registration);
 
     void Delete(Integer id);
 
     void Add(Registration_ registration);
+
 }
