@@ -3,8 +3,10 @@ package registration.hospitalregistration.Server.Imp;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import registration.hospitalregistration.mapper.Imp.departmentMapper;
+
 import registration.hospitalregistration.mapper.Imp.doctorMapper;
 import registration.hospitalregistration.mapper.Imp.registrationMapper;
+
 import registration.hospitalregistration.pojo.Department;
 
 import java.time.LocalDateTime;
@@ -16,6 +18,7 @@ public class departmentServer {
     @Resource
     private departmentMapper dmp;
 
+
     @Resource
     private doctorMapper docmp;
 
@@ -26,6 +29,7 @@ public class departmentServer {
      * 添加科室
      * @param department
      */
+
     public void Add(Department department) {
         department.setCreateTime(LocalDateTime.now());
         dmp.Add(department);
@@ -35,17 +39,22 @@ public class departmentServer {
      * 查看科室列表
      * @return
      */
+
     public List<Department> List() {
         return dmp.List();
     }
+
 
     /**
      * 更新科室信息
      * @param department
      */
+
+
     public void Update(Department department) {
         dmp.Update(department);
     }
+
 
     /**
      * 删除科室，需要同时删除科室中的病人，医生，病历单
@@ -56,4 +65,5 @@ public class departmentServer {
         rmp.DeleteByDepartmentIdentId(id);
         dmp.Delete(id);
     }
+
 }
