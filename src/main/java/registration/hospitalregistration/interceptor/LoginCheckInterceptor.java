@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import registration.hospitalregistration.Utils.JwtUtil;
 import registration.hospitalregistration.Utils.Result;
 
-//@Component
+@Component
 @Slf4j
 public class LoginCheckInterceptor implements HandlerInterceptor {
 
@@ -69,8 +69,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
      */
     @Override//目标资源方法运行后运行
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-//        HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
-//return true;
+        HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
     }
 
     /**
@@ -82,6 +81,6 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
      */
     @Override//视图渲染完毕后运行，最后运行
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-//        HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
+        HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
     }
 }

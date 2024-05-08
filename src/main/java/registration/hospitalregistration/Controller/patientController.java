@@ -76,7 +76,7 @@ public class patientController implements patientControllerImp {
         return Result.success();
     }
 
-    /**
+    /**通过id查询病人
      * @return
      */
     @Override

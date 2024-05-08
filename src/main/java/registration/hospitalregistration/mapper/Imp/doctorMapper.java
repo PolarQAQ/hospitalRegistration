@@ -1,5 +1,6 @@
 package registration.hospitalregistration.mapper.Imp;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import registration.hospitalregistration.pojo.Doctor;
@@ -31,4 +32,6 @@ public interface doctorMapper {
     Doctor login(Doctor doctor);
     void doctorDelete(Integer id);
     void doctorUpdate(Doctor doctor);
+    @Delete("delete from doctors where department_id=#{id}")
+    void DeleteByDepartmentId(Integer id);
 }

@@ -55,4 +55,12 @@ public class registrationServer {
         registration.setState("已挂号");
         rep.Add(registration);
     }
+
+    public void treat(Integer id) {
+        rep.treat(id);
+    }
+
+    public void treatByPatientId(Integer id) {
+        rep.treatByPatientId(id);
+    }
 }

@@ -26,7 +26,7 @@ public class registrationController implements registrationControllerImp {
     @Override
     @GetMapping
     public Result List() {
-        log.info("查询订单列表");
+        log.info("查询病历单列表");
         return Result.success(server.List());
     }
 
@@ -61,6 +61,25 @@ public class registrationController implements registrationControllerImp {
     public Result Update(@RequestBody Registration_ registration) {
         log.info("更新病历单信息");
         server.Update(registration);
+        return Result.success();
+    }
+
+    /**
+     * 通过病历单id治疗病人
+     * @param id
+     * @return
+     */
+    @PutMapping("/treat/{id}")
+    public Result treat(@PathVariable Integer id) {
+        log.info("通过病历单治疗病人:{}", id);
+        server.treat(id);
+        return Result.success();
+    }
+
+    @PutMapping("/treat/patient/{id}")
+    public Result treatByPatientId(@PathVariable Integer id) {
+        log.info("通过病人id治疗病人");
+        server.treatByPatientId(id);
         return Result.success();
     }
 

@@ -69,8 +69,8 @@ public class doctorController implements doctorControllerImp {
     }
 
     /**
-     * @param doctor
-     * @return
+     * @param doctor 医生类
+     * @return 返回数据模板
      */
     @Override
     @PutMapping
