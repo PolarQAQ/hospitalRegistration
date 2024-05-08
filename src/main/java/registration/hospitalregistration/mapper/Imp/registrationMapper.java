@@ -16,15 +16,10 @@ import java.util.List;
 public interface registrationMapper {
     void registrationDeleteByDoctor(Integer id);
     List<Registration_> List();
-
     List<Registration_> ListByDoctorId(Integer id);
-
     List<Registration_> ListByDepartmentId(Integer id);
-
     void Update(Registration_ registration);
-
     void Delete(Integer id);
-
     void Add(Registration_ registration);
     void registrationDeleteByPatientId(Integer id);
     void treat(Integer id);
