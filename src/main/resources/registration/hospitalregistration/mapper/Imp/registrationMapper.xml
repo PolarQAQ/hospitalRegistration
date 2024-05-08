@@ -51,6 +51,20 @@
         </set>
         where id=#{id}
     </update>
+    <update id="treat">
+        <if test="id != null">
+            update registrations
+            set state="已治疗"
+            where id=#{id}
+        </if>
+    </update>
+    <update id="treatByPatientId">
+        <if test="id != null">
+            update registrations
+            set state="已治疗"
+            where patient_id=#{id}
+        </if>
+    </update>
     <delete id="registrationDeleteByDoctor">
         delete
         from registrations
